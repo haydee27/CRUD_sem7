@@ -1,0 +1,25 @@
+create database bd_recurso_humano;
+
+create table tb_contacto(
+	id_contacto int(11) not null auto_increment,
+	nom_contacto varchar(45) default null,
+	email_contacto varchar(45) default null,
+	tel_contacto varchar(25) default null,
+	primary key(id_contacto))
+	engine=innodb auto_increment=1
+
+
+Crear esta tabla para la guia-6-JSP
+create table tb_persona(
+       dui_persona varchar(10) not null,
+       apellidos_persona varchar(30) null,
+       nombre_persona varchar(50) not null,
+       primary key(dui_persona))
+
+
+insert into tb_persona values
+	('23344523-4','Juan','Perez'),
+	('45893849-0','Roxana','Aparicio'),
+	('98475869-1','America','Lopez');
+
+
