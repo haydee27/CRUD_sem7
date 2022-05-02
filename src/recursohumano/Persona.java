@@ -29,6 +29,7 @@ public class Persona {
 
     public void setEmailPersona(String emailPersona) {
         this.emailPersona = emailPersona;
+        
     }
 
     public String getTelPersona() {
