@@ -30,7 +30,7 @@ public class MenuPrincipal {
         //Despliegue de menu basado en las opcion seleccionada
         switch (opcionMenu) {
             case "1":
-                //create create = new create();
+                Create create = new Create();
              break;
             case "2":
                 //Read read = new Read();
@@ -48,6 +48,5 @@ public class MenuPrincipal {
                  System.out.println("Seleccionar invalida! ");
              break;
         }
-        
     }
 }
