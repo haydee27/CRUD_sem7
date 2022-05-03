@@ -5,7 +5,7 @@ import java.sql.*; //Librerias para conexion a la BS
         
 public class ConexionCRUD {
    
-   private final String servidor =  "jdbc:mysql://127.0.0.1:3306/bd_recurso_humano";
+   private final String servidor =  "jdbc:mysql://127.0.0.1:3306/bd_recursos_humano";
    //Nombre del usuario (root por defecto) de la base de datos
    private final String usuario = "root";
    //Clave del usuario de la base de datos
