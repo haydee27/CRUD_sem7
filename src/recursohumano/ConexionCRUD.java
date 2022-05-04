@@ -48,7 +48,7 @@ public class ConexionCRUD {
             stmt.close();
             cone.close();
             System.out.println("Registro guardado correctamente!");
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println("e.getMessage");
         }
         
@@ -73,7 +73,7 @@ public class ConexionCRUD {
             stmt.executeUpdate(sqlQueryStmt);
             stmt.close();
             cone.close();
-        }catch(Exception ex){
+        }catch(SQLException ex){
             System.out.println("Ha ocurrido el siguient error: " + ex.getMessage());
         }
             
