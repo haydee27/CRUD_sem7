@@ -1,0 +1,10 @@
+create database bd_recurso_humano;
+
+
+create table tb_contacto(
+	id_contacto int(11) not null auto_increment,
+	nom_contacto varchar(45) default null,
+	email_contacto varchar(45) default null,
+	tel_contacto varchar(25) default null,
+	primary key(id_contacto))
+	engine=innodb auto_increment=1
