@@ -1,0 +1,12 @@
+CREATE DATABASE bd_registro_estudiante;
+
+USE bd_registro_estudiante;
+
+CREATE TABLE bd_estudiante (
+	id_estudiante int(11) not null auto_increment,
+    carnet_estudiante varchar(6) default null,
+	nom_estudiante varchar(30) default null,
+	ape_estudiante varchar(30) default null,
+	edad_estudiante int(3) default null,
+	primary key(id_estudiante))
+	engine=innodb auto_increment=1001
