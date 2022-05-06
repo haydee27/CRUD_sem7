@@ -29,8 +29,14 @@ public class Update {
       System.out.println ("Telefono: ");
    person.setTelPersona(leer.next());
    
-   String tabla =""
+   String tabla ="tb_contacto";
+   String camposvaloresnuevos ="nom_contacto= '" + person.getNomPersona() + "', email_contacto = '" + person.getEmailPersona()+ "', tel_contacto= '"  + person.getTelPersona() + "'";
    
+   utilerias.actualizarEliminarRegistro(tabla, camposvaloresnuevos, condicionBuscar);
+     System.out.println("Modificar correctamente!");
+     
+     MenuPrincipal.desplegarMenu();
+    
    
    }
 }

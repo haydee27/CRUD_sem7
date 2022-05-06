@@ -5,13 +5,13 @@ import java.sql.*; //Librerias para conexion a la BS
         
 public class ConexionCRUD {
    
-   private final String servidor =  "jdbc:mysql://127.0.0.1:3306/bd_recursos_humano";
+   private final String servidor =  "jdbc:mysql://localhost/bd_recurso_humano";
    //Nombre del usuario (root por defecto) de la base de datos
    private final String usuario = "root";
    //Clave del usuario de la base de datos
    private final String clave = "";
    //Libreria de mysql
-   private final String driverConector ="com.mysql.sqbo.Driver";
+   private final String driverConector ="com.mysql.jdbc.Driver";
    //Objeto de la clase Connection del paquete java.sql
    private static Connection conexion;
 
@@ -21,7 +21,7 @@ public class ConexionCRUD {
     //Establecer conexion
     conexion=DriverManager.getConnection(servidor, usuario, clave);
     }catch(ClassNotFoundException | SQLException e){
-            System.out.println("Conexion fallida! Error");
+            System.out.println("Conexion fallida! Error!: " + e.getMessage());
     }
      
 }
@@ -38,7 +38,7 @@ public class ConexionCRUD {
         try{
             
             //Definir la sentencia if
-            String sqlQueryStmt = "INSERT INTO" + tabla + " (" + camposTabla + ") VALUES (" + valoresCampos + ");";
+            String sqlQueryStmt = " INSERT INTO " + tabla + "( " + camposTabla + " ) VALUE (" + valoresCampos + " );";
             //Establece la comunicacion entre nuestra aplicacion java y la base de datos
             Statement stmt; //Envia sentencia sql a a base de datos
             stmt = cone.createStatement();
@@ -47,9 +47,10 @@ public class ConexionCRUD {
             //Cerrar el statement y la conexion; se cierra en orden inverso de como se han abierto
             stmt.close();
             cone.close();
+            
             System.out.println("Registro guardado correctamente!");
         }catch(SQLException e){
-            System.out.println("e.getMessage");
+            System.out.println(e.getMessage());
         }
         
     }
@@ -65,9 +66,9 @@ public class ConexionCRUD {
             String sqlQueryStmt;
             //Verificar que valoresCamposNuevos venga vacia y asi seleccionar si es borrar o actualizar registro
             if(valoresCamposNuevos.isEmpty()){
-                sqlQueryStmt = "DELETE FROM" + tabla + "WHERE" + condicion + ";";
+                sqlQueryStmt = " DELETE FROM " + tabla + " WHERE " + condicion + ";";
             }else{
-                sqlQueryStmt = "UPDATE" + tabla + "SET" + valoresCamposNuevos + "WHERE" + condicion + ";";
+                sqlQueryStmt = " UPDATE " + tabla + " SET " + valoresCamposNuevos + " WHERE " + condicion + ";";
             }
             stmt= cone.createStatement();
             stmt.executeUpdate(sqlQueryStmt);
@@ -79,7 +80,6 @@ public class ConexionCRUD {
             
     }
      
-   @SuppressWarnings("empty-statement")
     public void desplegarRegistros(String tablaBuscar, String camposBuscar, String condicionBuscar) throws SQLException{
         
         //Cargar la conexion
@@ -90,9 +90,9 @@ public class ConexionCRUD {
            Statement stmt;
            String sqlQueryStmt;
            if(condicionBuscar.equals("")){
-               sqlQueryStmt = "SELECT " + camposBuscar + "FROM" + tablaBuscar + ";";  
+               sqlQueryStmt = " SELECT " + camposBuscar + " FROM " + tablaBuscar + ";";  
            }else{
-               sqlQueryStmt = "SELECT" + camposBuscar + "FROM" + tablaBuscar + "WHERE" + condicionBuscar;
+               sqlQueryStmt = " SELECT " + camposBuscar + " FROM " + tablaBuscar + " WHERE " + condicionBuscar;
            }
             stmt = cone.createStatement();
             stmt.executeQuery(sqlQueryStmt);
@@ -105,7 +105,7 @@ public class ConexionCRUD {
                     int numColumnas = metaData.getColumnCount(); //Obtiene el numero de columna de la consulta
                     
                     System.out.println("<< REGISTROS ALMACENADOS >>");
-                    System.out.println();
+                    System.out.println("");
                     
                      for(int i = 1; i <= numColumnas; i++){
                         //Muestra los titulos de las columnas y %-20s/c/t indica la separacion entre columnas

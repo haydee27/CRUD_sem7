@@ -21,7 +21,7 @@ public class Create {
        
        String tabla= "tb_contacto";
        String camposTabla = "nom_contacto, email_contacto, tel_contacto";
-       String valoresCampos = "´" + person.getNomPersona() + "´,´" + person.getEmailPersona() + "´,´"+ person.getTelPersona() + "´,´";
+       String valoresCampos = "'" + person.getNomPersona() + "','" + person.getEmailPersona() + "','"+ person.getTelPersona() + "'";
        
        //Instancia u objeto de la clase conexionCrud
        ConexionCRUD utilerias = new ConexionCRUD();
